@@ -21,4 +21,27 @@ class Customer
         $this->accountBalance = $accountBalance;
     }
 
+    public function buy(Product $product): bool
+    {
+        if ($this->accountBalance >= $product->price) {
+            $this->accountBalance -= $product->price;
+            //ADD TO DATABASE
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+
+    public function sell(Product $product)
+    {
+        //CHECKING IF SOMEONE HAS PRODUCT YOU WANT TO SELL
+        $has = true;
+        if ($has === true) {
+            //CHANGE OWNER OF PRODUCT
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
