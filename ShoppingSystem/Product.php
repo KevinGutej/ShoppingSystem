@@ -1,6 +1,7 @@
-<?php 
+<?php
 
-class Product {
+class Product
+{
     public int|NULL $id = 0;
     public string $name = "";
     public float $price = 0.0;
@@ -14,4 +15,8 @@ class Product {
         $this->expireDate = $expireDate;
     }
 
+    public function __toString()
+    {
+        return "ID: " . $this->id . '<br>' . "Product Name: " . $this->name  . '<br>' . "Product Price: " . $this->price .   '<br>'. "Product Expire Date: " . $this->expireDate->format("d/m/Y");
+    }
 }
