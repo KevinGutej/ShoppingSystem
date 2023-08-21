@@ -21,6 +21,11 @@ class Customer
         $this->accountBalance = $accountBalance;
     }
 
+    public function getId(): int
+    {
+        return $this->id;
+    }
+
     public function buy(Product $product): bool
     {
         if ($this->accountBalance >= $product->price) {
@@ -35,7 +40,11 @@ class Customer
 
     public function sell(Product $product)
     {
-        //CHECKING IF SOMEONE HAS PRODUCT YOU WANT TO SELL
+        $connection = new mysqli("localhost", "root", "", "shoppingsystem");
+        if ($connection->errno == 0) {
+            $productId = $product->id;
+            $sqlRequest = "SELECT id FROM products WHERE id = '$productId';"; //START NEXT LESSON HERE!!!
+        }
         $has = true;
         if ($has === true) {
             //CHANGE OWNER OF PRODUCT

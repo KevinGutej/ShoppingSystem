@@ -26,7 +26,7 @@ class DataBaseController {
             if($result->num_rows === 1) {
                 $row = $result->fetch_assoc();
                 $expireDate = new DateTime($row["expireDate"]);
-                $product = new Product($productId, $row["name"], $row["price"], $expireDate);
+                $product = new Product($productId, $row["name"], $row["price"], $expireDate, $row["ownerID"]);
                 return $product;
             }else {
                 echo "No product with ID " . $productId;

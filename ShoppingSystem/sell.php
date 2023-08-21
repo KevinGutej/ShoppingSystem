@@ -7,7 +7,7 @@ if(!empty($_POST["ProductName"]) && isset($_POST["ProductName"])) {
         if(!empty($_POST["ProductExpireDate"]) && isset($_POST["ProductExpireDate"])) {
             $customer1 = new Customer(1, "Kevin", "Adamik", "014676236", "kevinisamazing@gmail.com", 100000);
             $expireDate = new DateTime($_POST["ProductExpireDate"]);
-            $product1 = new Product(NULL, $_POST["ProductName"], $_POST["ProductPrice"], $expireDate);
+            $product1 = new Product(NULL, $_POST["ProductName"], $_POST["ProductPrice"], $expireDate, $customer1->getId());
             $isSuccessful = $customer1->sell($product1);
             if($isSuccessful === true) {
                 echo "Selling product was successful";
@@ -34,7 +34,6 @@ if(!empty($_POST["ProductName"]) && isset($_POST["ProductName"])) {
     <div>
         Product Expire date: <input type="date" name = "ProductExpireDate" required>
     </div>
-    
     <button>Sell</button>
 </form>
 
